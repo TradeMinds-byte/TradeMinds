@@ -42,7 +42,12 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).json({ error: err.message || 'Internal server error' })
 })
 
-server.listen(PORT, () => {
-  console.log(`🚀 TradeMinds backend running on port ${PORT}`)
-})
+// VERCEL FIX: Only listen on a port if running locally
+if (process.env.NODE_ENV !== 'production') {
+  server.listen(PORT, () => {
+    console.log(`🚀 TradeMinds backend running on port ${PORT}`)
+  })
+}
+
+// VERCEL FIX: Export the app for serverless deployment
 export default app;
