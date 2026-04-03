@@ -44,5 +44,5 @@ app.use((err, req, res, next) => {
 
 server.listen(PORT, () => {
   console.log(`🚀 TradeMinds backend running on port ${PORT}`)
-  module.exports = app;
 })
+export default app;
