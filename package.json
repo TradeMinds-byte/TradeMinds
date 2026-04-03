@@ -1,0 +1,15 @@
+{
+  "name": "trademinds",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd trademinds/frontend && npm run dev -- --host",
+    "dev:backend": "cd trademinds/backend && npm run dev",
+    "start": "concurrently \"npm run start:backend\" \"npm run dev:frontend\"",
+    "start:backend": "cd trademinds/backend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
