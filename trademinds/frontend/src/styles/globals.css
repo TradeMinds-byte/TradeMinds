@@ -1,0 +1,188 @@
+/* 1. THE NUCLEAR RESET - FORCING WHITE MODE */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+:root {
+  /* Core Colors */
+  --bg-soft-white: #ffffff !important; 
+  --pure-white: #ffffff !important;
+  --text-deep-black: #1a1a1a;
+  --accent-gray: #666666;
+  
+  /* Doraemon Accents */
+  --doraemon-blue: #00A0E9;
+  --doraemon-red: #ED1C24;
+
+  /* CRITICAL: This tells Firefox to ignore system dark mode for this page */
+  color-scheme: light !important;
+}
+
+/* Force the very base layer of the browser */
+html, body {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--text-deep-black);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Target the React Root directly */
+#root, #__next {
+  background-color: #ffffff !important;
+  min-height: 100vh;
+}
+
+/* 2. LAYOUT COMPONENTS */
+.centered-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* Big, Bold, Black Text */
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 850;
+  letter-spacing: -0.05em;
+  margin: 0;
+  color: #000000;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--accent-gray);
+  max-width: 600px;
+  margin: 1.5rem auto 0 auto;
+  line-height: 1.6;
+}
+
+/* 3. BUTTONS */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2.5rem;
+  background-color: #000;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  background-color: var(--doraemon-blue);
+  box-shadow: 0 10px 20px rgba(0,160,233, 0.2);
+}
+
+/* 4. THE CARD SYSTEM */
+.skill-card {
+  background: #ffffff !important;
+  padding: 1.5rem;
+  border-radius: 20px;
+  /* Added a slightly more visible border for Firefox clarity */
+  border: 1px solid rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+  border-color: var(--doraemon-blue);
+}
+
+/* 5. MARKETPLACE SPECIFIC GRID */
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* Typography inside cards */
+.skill-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: #000;
+}
+
+.skill-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.price-tag {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #000;
+}
+
+/* 6. INPUTS & SELECTS */
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  outline: none;
+  background-color: #ffffff !important;
+}
+
+.input-field:focus {
+  border-color: var(--doraemon-blue);
+}
+
+/* 7. FIREFOX-SPECIFIC OVERRIDE (Last Resort) */
+@-moz-document url-prefix() {
+  body {
+    background-color: #ffffff !important;
+  }
+}
+
+/* 8. TUTOR MOBILE RESPONSIVE TWEAKS */
+.tutor-layout {
+  display: flex;
+  flex-direction: row;
+}
+.tutor-sidebar {
+  width: 240px;
+  border-right: 1px solid var(--border-color);
+}
+@media (max-width: 768px) {
+  .tutor-layout {
+    flex-direction: column;
+  }
+  .tutor-sidebar {
+    width: 100%;
+    max-height: 180px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
